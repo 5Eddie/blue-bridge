@@ -2,12 +2,7 @@ import { redirect } from 'next/navigation'
 import { logout } from '@/app/login/actions'
 import { createClient } from '@/lib/supabase/server'
 
-export default async function AccountPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ error?: string }>
-}) {
-  const { error: actionError } = await searchParams
+export default async function AccountPage() {
   const supabase = await createClient()
   const {
     data: { user },
@@ -31,10 +26,6 @@ export default async function AccountPage({
   return (
     <main className="mx-auto w-full max-w-2xl space-y-6 p-6">
       <h1 className="text-3xl font-bold">Your account</h1>
-
-      {actionError && (
-        <p className="rounded-lg bg-red-100 p-3 text-red-800">{actionError}</p>
-      )}
 
       <section className="space-y-2 rounded-lg border border-neutral-300 p-5">
         <p>

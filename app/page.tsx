@@ -1,69 +1,87 @@
-import Image from "next/image";
+import Link from 'next/link'
+
+const steps = [
+  { n: '1', t: 'Tell us about your trip', d: 'Where, when, your budget and how you like to travel.' },
+  { n: '2', t: 'Meet people who know the way', d: 'Local guides, drivers, hosts and travelers who just came back.' },
+  { n: '3', t: 'Go together', d: 'Contact them directly. No middlemen, no booking fees.' },
+]
+
+const perks = [
+  { e: '✅', t: 'Verified locals', d: 'IDs and pages are checked by hand before a profile gets the badge.' },
+  { e: '💸', t: 'Real budgets', d: 'Travelers share what they actually spent, day by day.' },
+  { e: '🤝', t: 'Travel buddies', d: 'Find people heading the same way and join their trip.' },
+]
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main>
+      <section className="bb-hero">
+        <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#17509A" />
+              <stop offset=".55" stopColor="#5FA0D8" />
+              <stop offset=".85" stopColor="#F5D79A" />
+            </linearGradient>
+          </defs>
+          <rect width="1200" height="700" fill="url(#sky)" />
+          <circle cx="880" cy="430" r="62" fill="#FBE3A4" />
+          <path d="M0 470 L120 400 L230 455 L380 360 L520 450 L650 390 L800 460 L960 380 L1100 450 L1200 410 V700 H0Z" fill="#4E6EA3" />
+          <path d="M0 520 Q200 450 420 500 T820 490 T1200 480 V700 H0Z" fill="#C79A44" />
+          <path d="M0 580 Q300 520 600 570 T1200 555 V700 H0Z" fill="#8C9A3F" />
+          <path d="M0 650 Q400 600 800 640 T1200 625 V700 H0Z" fill="#5E6E2B" />
+          <g transform="translate(900 520)">
+            <path d="M-70 60 V0 Q-70 -20 -40 -22 H40 Q70 -20 70 0 V60Z" fill="#F7F3E8" />
+            <path d="M-82 -14 Q0 -78 82 -14 Z" fill="#FFFFFF" />
+            <rect x="-14" y="8" width="28" height="52" rx="4" fill="#D9552B" />
+            <rect x="-5" y="-52" width="10" height="12" fill="#D9552B" />
+          </g>
+        </svg>
+        <div className="bb-hero-in">
+          <h1 className="bb-h1">Mongolia is better with someone who knows it.</h1>
+          <p className="bb-sub">
+            Meet local guides, drivers and hosts, and travelers who just came back.
+            Free to use, no middlemen.
           </p>
+          <div className="bb-btns">
+            <Link href="/login" className="bb-btn">Join Blue Bridge</Link>
+            <Link href="#how" className="bb-btn ghost">How it works</Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section id="how" className="bb-wrap">
+        <h2 className="bb-h2">How it works</h2>
+        <div className="bb-grid">
+          {steps.map((s) => (
+            <article key={s.n} className="bb-card">
+              <span className="bb-num">{s.n}</span>
+              <h3>{s.t}</h3>
+              <p>{s.d}</p>
+            </article>
+          ))}
         </div>
-      </main>
-    </div>
-  );
+      </section>
+
+      <section className="bb-wrap" style={{ paddingTop: 0 }}>
+        <h2 className="bb-h2">Why Blue Bridge</h2>
+        <div className="bb-grid">
+          {perks.map((p) => (
+            <article key={p.t} className="bb-card">
+              <span className="bb-emoji">{p.e}</span>
+              <h3>{p.t}</h3>
+              <p>{p.d}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="bb-wrap" style={{ paddingTop: 0 }}>
+        <div className="bb-cta">
+          <h2 className="bb-h2">Ready for the steppe?</h2>
+          <Link href="/login" className="bb-btn">Create a free account</Link>
+        </div>
+      </section>
+    </main>
+  )
 }

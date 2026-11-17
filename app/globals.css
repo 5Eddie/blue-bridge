@@ -24,3 +24,44 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* ===== Blue Bridge design ===== */
+:root {
+  --bb-bg: #F6F4EE; --bb-ink: #12264A; --bb-mute: #5A6785;
+  --bb-card: #FFFFFF; --bb-line: #DAD6C8;
+  --bb-sky: #1F5FA8; --bb-gold: #E3A93B; --bb-deel: #D9552B;
+  --bb-head: "Unbounded", "Trebuchet MS", system-ui, sans-serif;
+  --bb-body: "Onest", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bb-bg: #0E1A33; --bb-ink: #EEF1F7; --bb-mute: #A7B2CC; --bb-card: #172545; --bb-line: #2A3A60; }
+}
+body { background: var(--bb-bg); color: var(--bb-ink); font-family: var(--bb-body); line-height: 1.55; }
+a { color: inherit; }
+
+.bb-header { display: flex; justify-content: space-between; align-items: center; padding: .9rem 1.25rem; background: var(--bb-bg); border-bottom: 1px solid var(--bb-line); }
+.bb-logo { font-family: var(--bb-head); font-weight: 700; text-decoration: none; }
+.bb-nav { display: flex; gap: 1.2rem; font-weight: 500; }
+.bb-nav a { text-decoration: none; }
+.bb-nav a:hover { color: var(--bb-deel); }
+
+.bb-hero { position: relative; min-height: 82svh; overflow: hidden; color: #fff; background: #1F5FA8; }
+.bb-hero svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.bb-hero-in { position: relative; z-index: 2; max-width: 44rem; padding: clamp(3rem, 12vh, 7rem) 1.5rem 2rem; margin-left: clamp(0rem, 6vw, 6rem); }
+.bb-h1 { font-family: var(--bb-head); font-weight: 700; font-size: clamp(1.9rem, 5vw, 3.4rem); line-height: 1.12; margin: 0 0 1.2rem; }
+.bb-sub { font-size: 1.15rem; max-width: 34rem; margin: 0 0 1.8rem; text-shadow: 0 1px 12px rgba(18, 38, 74, .45); }
+.bb-btns { display: flex; flex-wrap: wrap; gap: .8rem; }
+.bb-btn { display: inline-block; background: var(--bb-gold); color: #12264A; border-radius: 14px; padding: .9rem 1.5rem; font-weight: 600; text-decoration: none; }
+.bb-btn:hover { background: #F0BA52; }
+.bb-btn.ghost { background: rgba(255, 255, 255, .18); color: #fff; border: 2px solid rgba(255, 255, 255, .7); }
+
+.bb-wrap { max-width: 62rem; margin: 0 auto; padding: 4rem 1.25rem; }
+.bb-h2 { font-family: var(--bb-head); font-weight: 500; font-size: clamp(1.3rem, 3vw, 1.9rem); margin: 0 0 1.6rem; }
+.bb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.1rem; }
+.bb-card { background: var(--bb-card); border: 1px solid var(--bb-line); border-radius: 18px; padding: 1.3rem; }
+.bb-card h3 { margin: .3rem 0 .4rem; font-size: 1.1rem; }
+.bb-card p { margin: 0; color: var(--bb-mute); }
+.bb-num { display: inline-grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--bb-deel); color: #fff; font-family: var(--bb-head); font-weight: 700; }
+.bb-emoji { font-size: 1.8rem; }
+.bb-cta { text-align: center; background: var(--bb-sky); color: #fff; border-radius: 24px; padding: 3rem 1.5rem; }
+.bb-cta .bb-h2 { margin-bottom: 1.2rem; }
+.bb-footer { border-top: 1px solid var(--bb-line); padding: 1.5rem 1.25rem; text-align: center; color: var(--bb-mute); font-size: .92rem; }
