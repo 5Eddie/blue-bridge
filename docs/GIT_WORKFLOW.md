@@ -6,4 +6,3 @@
 4. GitHub руу илгээх: `git push -u origin eddie/admin-actions`
 5. GitHub дээр **Pull Request** нээж, нөгөө хүн нэг харсны дараа `main` руу нэгтгэнэ.
 
-Нэг ажил нэг салаа. Жижиг, олон удаагийн commit хий.
