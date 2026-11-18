@@ -1,17 +1,12 @@
-import { getListings } from '@/lib/queries'
-import ListingCard from '@/components/ListingCard'
+import DairyBrowser from "@/components/DairyBrowser";
+// TEMP: lib/queries.ts бэлэн болмогц импортыг @/lib/queries руу шилжүүлнэ.
+import { getProducts } from "@/components/temp-data";
 
-// Owner: Urnaa. Uses mock data until Eddie connects Supabase.
 export default async function ListingsPage() {
-  const listings = await getListings()
+  const products = await getProducts();
   return (
-    <main className="bb-wrap">
-      <h1 className="bb-h2">Guides, drivers, hosts and tours</h1>
-      <div className="bb-grid">
-        {listings.map((l) => (
-          <ListingCard key={l.id} listing={l} />
-        ))}
-      </div>
+    <main>
+      <DairyBrowser products={products} />
     </main>
-  )
+  );
 }

@@ -20,7 +20,8 @@
     "searchPlaceholder": "Айраг, ааруул, сум, малчны нэр...",
     "search": "Хайх",
     "regionLabel": "Аймаг",
-    "regionAll": "Бүх аймаг"
+    "regionAll": "Бүх аймаг",
+    "imageAlt": "Монгол гэрийн дэргэдэх хөдөөгийн тал нутаг"
   },
   "benefits": {
     "title": "Дундын худалдаачингүй",
@@ -50,9 +51,66 @@
   "cards": {
     "addToCart": "Сагсанд хийх",
     "visitRequest": "Айлд очих хүсэлт",
-    "perDay": "/ хоног"
+    "perDay": "/ хоног",
+    "soum": "сум",
+    "ratingLabel": "Үнэлгээ"
+  },
+  "sections": {
+    "featuredProducts": "Онцлох цагаан идээ",
+    "featuredProductsSub": "Бүтээгдэхүүн бүр дээр хийсэн малчин, нутаг, үнэ нь бичигдсэн.",
+    "featuredStays": "Онцлох малчин айлууд",
+    "featuredStaysSub": "Гүү саах, айраг исгэх, мал хариулах — малчны өдөр тутмын ажлыг хамт хийгээрэй.",
+    "herders": "Манай малчид"
+  },
+  "listings": {
+    "title": "Цагаан идээ",
+    "subtitle": "Малчны хотноос шууд. Дундын худалдаачингүй.",
+    "count": "{count} бүтээгдэхүүн"
+  },
+  "stories": {
+    "title": "Малчин айлын туршлага",
+    "subtitle": "Малчин айлд зочилж, өдөр тутмын ажлыг хамт хийгээрэй.",
+    "count": "{count} малчин айл"
+  },
+  "filters": {
+    "all": "Бүгд",
+    "category": "Төрөл",
+    "region": "Аймаг",
+    "searchPlaceholder": "Хайх...",
+    "search": "Хайх"
+  },
+  "empty": {
+    "products": "Энэ шүүлтээр бүтээгдэхүүн олдсонгүй. Өөр аймаг эсвэл төрлөө сонгоно уу.",
+    "stays": "Энэ нутагт малчин айл олдсонгүй. Бүх аймгаар хайж үзнэ үү."
+  },
+  "toast": {
+    "added": "{title} сагсанд нэмэгдлээ",
+    "requestSent": "{title} — хүсэлт малчинд илгээгдлээ"
   },
   "footer": {
     "text": "© 2026 Малчин Шууд · Цагаан идээний зах зээл ба агро-аялал · Дипломын төсөл"
-  }
+  },
+  "regions": [
+    { "id": "arkhangai", "label": "Архангай" },
+    { "id": "bayan-olgii", "label": "Баян-Өлгий" },
+    { "id": "bayankhongor", "label": "Баянхонгор" },
+    { "id": "bulgan", "label": "Булган" },
+    { "id": "govi-altai", "label": "Говь-Алтай" },
+    { "id": "govisumber", "label": "Говьсүмбэр" },
+    { "id": "darkhan-uul", "label": "Дархан-Уул" },
+    { "id": "dornogovi", "label": "Дорноговь" },
+    { "id": "dornod", "label": "Дорнод" },
+    { "id": "dundgovi", "label": "Дундговь" },
+    { "id": "zavkhan", "label": "Завхан" },
+    { "id": "orkhon", "label": "Орхон" },
+    { "id": "ovorkhangai", "label": "Өвөрхангай" },
+    { "id": "omnogovi", "label": "Өмнөговь" },
+    { "id": "sukhbaatar", "label": "Сүхбаатар" },
+    { "id": "selenge", "label": "Сэлэнгэ" },
+    { "id": "tov", "label": "Төв" },
+    { "id": "uvs", "label": "Увс" },
+    { "id": "khovd", "label": "Ховд" },
+    { "id": "khovsgol", "label": "Хөвсгөл" },
+    { "id": "khentii", "label": "Хэнтий" }
+  ]
 }

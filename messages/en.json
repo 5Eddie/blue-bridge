@@ -20,7 +20,8 @@
     "searchPlaceholder": "Try airag, aaruul, a soum or a herder's name...",
     "search": "Search",
     "regionLabel": "Province",
-    "regionAll": "All provinces"
+    "regionAll": "All provinces",
+    "imageAlt": "Rural steppe landscape with a traditional Mongolian ger"
   },
   "benefits": {
     "title": "No middlemen",
@@ -50,9 +51,66 @@
   "cards": {
     "addToCart": "Add to cart",
     "visitRequest": "Request a family stay",
-    "perDay": "/ night"
+    "perDay": "/ night",
+    "soum": "soum",
+    "ratingLabel": "Rating"
+  },
+  "sections": {
+    "featuredProducts": "Featured dairy",
+    "featuredProductsSub": "Every product lists the herder who made it, where, and the price.",
+    "featuredStays": "Featured herder families",
+    "featuredStaysSub": "Milk the mares, ferment airag, herd the livestock — do the daily work alongside a herder family.",
+    "herders": "Our herders"
+  },
+  "listings": {
+    "title": "Dairy",
+    "subtitle": "Straight from the herder's corral. No middlemen.",
+    "count": "{count} products"
+  },
+  "stories": {
+    "title": "Herder family experiences",
+    "subtitle": "Stay with a herder family and do their daily work together.",
+    "count": "{count} herder families"
+  },
+  "filters": {
+    "all": "All",
+    "category": "Category",
+    "region": "Province",
+    "searchPlaceholder": "Search...",
+    "search": "Search"
+  },
+  "empty": {
+    "products": "No products found for this search. Try another province or category.",
+    "stays": "No herder family found in this area. Try searching all provinces."
+  },
+  "toast": {
+    "added": "{title} added to cart",
+    "requestSent": "Request sent for {title}"
   },
   "footer": {
     "text": "© 2026 Herder Direct · Dairy marketplace & agro-tourism · Thesis project"
-  }
+  },
+  "regions": [
+    { "id": "arkhangai", "label": "Arkhangai" },
+    { "id": "bayan-olgii", "label": "Bayan-Ölgii" },
+    { "id": "bayankhongor", "label": "Bayankhongor" },
+    { "id": "bulgan", "label": "Bulgan" },
+    { "id": "govi-altai", "label": "Govi-Altai" },
+    { "id": "govisumber", "label": "Govisümber" },
+    { "id": "darkhan-uul", "label": "Darkhan-Uul" },
+    { "id": "dornogovi", "label": "Dornogovi" },
+    { "id": "dornod", "label": "Dornod" },
+    { "id": "dundgovi", "label": "Dundgovi" },
+    { "id": "zavkhan", "label": "Zavkhan" },
+    { "id": "orkhon", "label": "Orkhon" },
+    { "id": "ovorkhangai", "label": "Övörkhangai" },
+    { "id": "omnogovi", "label": "Ömnögovi" },
+    { "id": "sukhbaatar", "label": "Sükhbaatar" },
+    { "id": "selenge", "label": "Selenge" },
+    { "id": "tov", "label": "Töv" },
+    { "id": "uvs", "label": "Uvs" },
+    { "id": "khovd", "label": "Khovd" },
+    { "id": "khovsgol", "label": "Khövsgöl" },
+    { "id": "khentii", "label": "Khentii" }
+  ]
 }

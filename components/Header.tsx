@@ -69,8 +69,8 @@ export default function Header() {
             </button>
           </div>
 
-          <button type="button" className="btn soft">
-            {t("cart")}
+          <button type="button" className="btn soft" aria-label={t("cart")}>
+            <span className="cart-label">{t("cart")}</span>
             <span className="cart-count">{count}</span>
           </button>
 
@@ -95,6 +95,23 @@ export default function Header() {
 
       {open && (
         <nav id="mobile-menu" className="mobile-menu" aria-label={t("navLabel")}>
+          <div className="mobile-lang" role="group" aria-label={t("langLabel")}>
+            <button
+              type="button"
+              aria-pressed={locale === "mn"}
+              onClick={() => switchLocale("mn")}
+            >
+              MN
+            </button>
+            <span aria-hidden="true">|</span>
+            <button
+              type="button"
+              aria-pressed={locale === "en"}
+              onClick={() => switchLocale("en")}
+            >
+              EN
+            </button>
+          </div>
           {links.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
               {link.label}
