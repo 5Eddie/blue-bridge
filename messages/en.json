@@ -1,4 +1,58 @@
 {
-  "nav": { "login": "Log in", "account": "My account" },
-  "home": { "title": "Mongolia is better with someone who knows it." }
+  "nav": {
+    "brand": "Herder Direct",
+    "dairy": "Dairy",
+    "stays": "Family stays",
+    "how": "How it works",
+    "herders": "Herders",
+    "cart": "Cart",
+    "login": "Log in",
+    "navLabel": "Main menu",
+    "langLabel": "Switch language",
+    "menuLabel": "Open menu"
+  },
+  "hero": {
+    "title": "Buy straight from the herder. Spend a day living like one.",
+    "subtitle": "No middlemen. Order dairy made by the very family that herds the livestock, milks the mares and dries the aaruul — then visit them and live the nomadic life together.",
+    "modeGroupLabel": "Choose a mode",
+    "modeBuy": "Buy dairy",
+    "modeStay": "Stay with a family",
+    "searchPlaceholder": "Try airag, aaruul, a soum or a herder's name...",
+    "search": "Search",
+    "regionLabel": "Province",
+    "regionAll": "All provinces"
+  },
+  "benefits": {
+    "title": "No middlemen",
+    "items": [
+      "The herder themselves, not a reseller",
+      "More money reaches the herder",
+      "Pick up along your travel route"
+    ]
+  },
+  "how": {
+    "title": "How it works",
+    "steps": [
+      {
+        "title": "Choose",
+        "text": "Pick your dairy from a herder's corral, or the family you'd like to stay with."
+      },
+      {
+        "title": "Arrange directly with the herder",
+        "text": "Your order goes straight to the herder. They set their own prices."
+      },
+      {
+        "title": "Collect along the way",
+        "text": "Stop by on your journey to pick up your dairy, stay the night and lend a hand."
+      }
+    ]
+  },
+  "cards": {
+    "addToCart": "Add to cart",
+    "visitRequest": "Request a family stay",
+    "perDay": "/ night"
+  },
+  "footer": {
+    "text": "© 2026 Herder Direct · Dairy marketplace & agro-tourism · Thesis project"
+  }
 }

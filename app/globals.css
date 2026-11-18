@@ -1,67 +1,362 @@
 @import "tailwindcss";
 
+/* ─── Design tokens ─────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Brand (pasteel цэнхэр / минт) */
+  --blue: #3674B5;
+  --blue-2: #578FCA;
+  --sky: #A1E3F9;
+  --mint: #D1F8EF;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Surfaces & text */
+  --bg: #FAFAFA;
+  --card: #FFFFFF;
+  --text: #0F172A;
+  --muted: #5B6B80;
+  --line: #E2E8F0;
+
+  /* Semantic */
+  --on-blue: #FFFFFF;
+  --warn: #B45309;
+  --focus: var(--blue-2);
+
+  --r: 12px;
+  --shadow: 0 2px 8px rgba(54, 116, 181, 0.08);
+
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --blue: #7FB0EA;
+    --blue-2: #A1CBF5;
+    --sky: #1E3A55;
+    --mint: #173B38;
+
+    --bg: #0E141B;
+    --card: #16202B;
+    --text: #E8EEF5;
+    --muted: #9AABBD;
+    --line: #273545;
+
+    --on-blue: #0E141B;
+    --warn: #F2B35E;
+    --focus: var(--blue-2);
+
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+
+    color-scheme: dark;
   }
 }
 
+/* ─── Base ──────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-noto-sans), "Noto Sans", system-ui, -apple-system,
+    "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
-/* ===== Blue Bridge design ===== */
-:root {
-  --bb-bg: #F6F4EE; --bb-ink: #12264A; --bb-mute: #5A6785;
-  --bb-card: #FFFFFF; --bb-line: #DAD6C8;
-  --bb-sky: #1F5FA8; --bb-gold: #E3A93B; --bb-deel: #D9552B;
-  --bb-head: "Unbounded", "Trebuchet MS", system-ui, sans-serif;
-  --bb-body: "Onest", "Segoe UI", system-ui, sans-serif;
+
+main {
+  flex: 1 1 auto;
+  width: 100%;
 }
-@media (prefers-color-scheme: dark) {
-  :root { --bb-bg: #0E1A33; --bb-ink: #EEF1F7; --bb-mute: #A7B2CC; --bb-card: #172545; --bb-line: #2A3A60; }
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-noto-serif), "Noto Serif", Georgia,
+    "Times New Roman", serif;
+  line-height: 1.25;
+  font-weight: 700;
+  margin: 0;
 }
-body { background: var(--bb-bg); color: var(--bb-ink); font-family: var(--bb-body); line-height: 1.55; }
-a { color: inherit; }
 
-.bb-header { display: flex; justify-content: space-between; align-items: center; padding: .9rem 1.25rem; background: var(--bb-bg); border-bottom: 1px solid var(--bb-line); }
-.bb-logo { font-family: var(--bb-head); font-weight: 700; text-decoration: none; }
-.bb-nav { display: flex; gap: 1.2rem; font-weight: 500; }
-.bb-nav a { text-decoration: none; }
-.bb-nav a:hover { color: var(--bb-deel); }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-.bb-hero { position: relative; min-height: 82svh; overflow: hidden; color: #fff; background: #1F5FA8; }
-.bb-hero svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.bb-hero-in { position: relative; z-index: 2; max-width: 44rem; padding: clamp(3rem, 12vh, 7rem) 1.5rem 2rem; margin-left: clamp(0rem, 6vw, 6rem); }
-.bb-h1 { font-family: var(--bb-head); font-weight: 700; font-size: clamp(1.9rem, 5vw, 3.4rem); line-height: 1.12; margin: 0 0 1.2rem; }
-.bb-sub { font-size: 1.15rem; max-width: 34rem; margin: 0 0 1.8rem; text-shadow: 0 1px 12px rgba(18, 38, 74, .45); }
-.bb-btns { display: flex; flex-wrap: wrap; gap: .8rem; }
-.bb-btn { display: inline-block; background: var(--bb-gold); color: #12264A; border-radius: 14px; padding: .9rem 1.5rem; font-weight: 600; text-decoration: none; }
-.bb-btn:hover { background: #F0BA52; }
-.bb-btn.ghost { background: rgba(255, 255, 255, .18); color: #fff; border: 2px solid rgba(255, 255, 255, .7); }
+button {
+  font: inherit;
+  cursor: pointer;
+}
 
-.bb-wrap { max-width: 62rem; margin: 0 auto; padding: 4rem 1.25rem; }
-.bb-h2 { font-family: var(--bb-head); font-weight: 500; font-size: clamp(1.3rem, 3vw, 1.9rem); margin: 0 0 1.6rem; }
-.bb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.1rem; }
-.bb-card { background: var(--bb-card); border: 1px solid var(--bb-line); border-radius: 18px; padding: 1.3rem; }
-.bb-card h3 { margin: .3rem 0 .4rem; font-size: 1.1rem; }
-.bb-card p { margin: 0; color: var(--bb-mute); }
-.bb-num { display: inline-grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--bb-deel); color: #fff; font-family: var(--bb-head); font-weight: 700; }
-.bb-emoji { font-size: 1.8rem; }
-.bb-cta { text-align: center; background: var(--bb-sky); color: #fff; border-radius: 24px; padding: 3rem 1.5rem; }
-.bb-cta .bb-h2 { margin-bottom: 1.2rem; }
-.bb-footer { border-top: 1px solid var(--bb-line); padding: 1.5rem 1.25rem; text-align: center; color: var(--bb-mute); font-size: .92rem; }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Layout ────────────────────────────────────────────────────── */
+.wrap,
+.container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0;
+  border-radius: 10px;
+  padding: 9px 18px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: var(--blue);
+  color: var(--on-blue);
+}
+.btn:hover {
+  background: var(--blue-2);
+}
+
+.btn.soft {
+  background: var(--mint);
+  color: var(--blue);
+}
+.btn.soft:hover {
+  background: var(--sky);
+}
+
+.btn.line {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+.btn.line:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* ─── Cards ─────────────────────────────────────────────────────── */
+.card,
+.bb-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.card {
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Legacy alias: padded card for pre-existing pages */
+.bb-card {
+  padding: 1.25rem;
+}
+
+/* ─── Chips ─────────────────────────────────────────────────────── */
+.chip {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 0.88rem;
+}
+.chip[aria-pressed="true"] {
+  background: var(--blue);
+  color: var(--on-blue);
+  border-color: var(--blue);
+}
+
+/* ─── Grid ──────────────────────────────────────────────────────── */
+.grid,
+.bb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  gap: 20px;
+}
+
+/* ─── Legacy page helpers (дотоод хуудсууд шинэ класс руу шилжих хүртэл) ─── */
+.bb-wrap {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 56px 5%;
+}
+
+.bb-h2 {
+  font-size: 1.6rem;
+  margin: 0 0 1.5rem;
+}
+
+/* ─── Header ──────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 64px;
+}
+
+.brand {
+  font-family: var(--font-noto-serif), "Noto Serif", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--blue);
+  white-space: nowrap;
+  margin-right: auto;
+}
+
+.nav-links {
+  display: none;
+  gap: 22px;
+}
+.nav-links a {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+.nav-links a:hover {
+  color: var(--blue);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.lang-switch button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 700;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+.lang-switch button[aria-pressed="true"] {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cart-count {
+  background: var(--blue);
+  color: var(--on-blue);
+  border-radius: 999px;
+  padding: 0 8px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  min-width: 1.5em;
+  text-align: center;
+}
+
+.hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: transparent;
+}
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 5%;
+  border-top: 1px solid var(--line);
+}
+.mobile-menu a {
+  padding: 12px 0;
+  font-weight: 500;
+  border-bottom: 1px solid var(--line);
+}
+.mobile-menu a:last-child {
+  border-bottom: 0;
+}
+
+@media (min-width: 760px) {
+  .nav-links {
+    display: flex;
+  }
+  .hamburger,
+  .mobile-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 759px) {
+  .login-btn {
+    display: none;
+  }
+}
+
+/* ─── Footer ──────────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  text-align: center;
+  padding: 26px 5%;
+  font-size: 0.85rem;
+}
+.site-footer p {
+  margin: 0;
+}
