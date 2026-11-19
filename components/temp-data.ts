@@ -38,6 +38,33 @@ export interface Stay {
   activities: string[];
 }
 
+export interface ProductPreview {
+  id: string;
+  category: string;
+  herder: Pick<Herder, "province" | "soum">;
+  title: string;
+  description: string;
+  unit: string;
+  rating: number;
+  emoji: string;
+  photo: string | null;
+}
+
+export interface StayPreview {
+  id: string;
+  herder: Pick<Herder, "province" | "soum">;
+  title: string;
+  rating: number;
+  emoji: string;
+  photo: string | null;
+}
+
+export interface HerderPreview {
+  id: string;
+  province: string;
+  soum: string;
+}
+
 const herders: Herder[] = [
   { id: "b", name: "Д. Батжаргал", province: "arkhangai", soum: "Ихтамир", avatar: "Д", rating: 5.0 },
   { id: "m", name: "А. Мөнхтуяа", province: "selenge", soum: "Баруунбүрэн", avatar: "А", rating: 4.9 },
@@ -72,4 +99,33 @@ export async function getStays(): Promise<Stay[]> {
 
 export async function getHerders(): Promise<Herder[]> {
   return herders;
+}
+
+export async function getProductPreviews(): Promise<ProductPreview[]> {
+  return products.map(({ id, category, herder, title, description, unit, rating, emoji, photo }) => ({
+    id,
+    category,
+    herder: { province: herder.province, soum: herder.soum },
+    title,
+    description,
+    unit,
+    rating,
+    emoji,
+    photo,
+  }));
+}
+
+export async function getStayPreviews(): Promise<StayPreview[]> {
+  return stays.map(({ id, herder, title, rating, emoji, photo }) => ({
+    id,
+    herder: { province: herder.province, soum: herder.soum },
+    title,
+    rating,
+    emoji,
+    photo,
+  }));
+}
+
+export async function getHerderPreviews(): Promise<HerderPreview[]> {
+  return herders.map(({ id, province, soum }) => ({ id, province, soum }));
 }

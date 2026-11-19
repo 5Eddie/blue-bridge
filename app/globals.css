@@ -2,6 +2,15 @@
 
 /* ─── Design tokens ─────────────────────────────────────────────── */
 :root {
+  --mongolia-background-image: url("/images/mongolia-bg.png");
+  --mongolia-image-overlay:
+    linear-gradient(90deg, rgba(20, 36, 34, 0.62), rgba(20, 36, 34, 0.08) 80%),
+    linear-gradient(180deg, rgba(18, 31, 39, 0.22), rgba(18, 31, 39, 0.48));
+  --access-blue: #1F4E79;
+  --access-green: #6B8E4E;
+  --access-sand: #F4E9D8;
+  --access-gold: #D9A441;
+
   /* Brand (pasteel цэнхэр / минт) */
   --blue: #3674B5;
   --blue-2: #578FCA;
@@ -269,6 +278,51 @@ img {
   gap: 10px;
 }
 
+.account-menu {
+  position: relative;
+}
+.account-trigger {
+  max-width: 190px;
+  gap: 8px;
+}
+.account-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.account-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 60;
+  min-width: 150px;
+  padding: 6px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+.account-popover button,
+.mobile-logout {
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+}
+.account-popover button:hover,
+.mobile-logout:hover {
+  background: var(--mint);
+}
+.account-popover p,
+.logout-error {
+  color: #b42318;
+  font-size: 0.85rem;
+  margin: 6px 8px;
+}
+
 .lang-switch {
   display: inline-flex;
   align-items: center;
@@ -335,6 +389,11 @@ img {
 .mobile-menu a:last-child {
   border-bottom: 0;
 }
+.mobile-logout {
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  font: inherit;
+}
 
 .mobile-lang {
   display: flex;
@@ -357,7 +416,7 @@ img {
   text-underline-offset: 3px;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 1100px) {
   .nav-links {
     display: flex;
   }
@@ -369,9 +428,17 @@ img {
 
 @media (max-width: 759px) {
   .login-btn,
-  .lang-switch {
+  .lang-switch,
+  .account-menu {
     display: none;
   }
+}
+.mobile-account-label {
+  margin: 0;
+  padding: 12px 0 4px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 650;
 }
 
 @media (max-width: 359px) {
@@ -400,7 +467,10 @@ img {
   align-items: center;
   min-height: 78vh;
   padding: 56px 0 48px;
-  background: linear-gradient(160deg, var(--mint), var(--sky));
+  background-color: #394a3b;
+  background-image: var(--mongolia-background-image);
+  background-position: center;
+  background-size: cover;
   overflow: hidden;
 }
 
@@ -412,11 +482,14 @@ img {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(15, 23, 42, 0.62),
-    rgba(15, 23, 42, 0.3)
-  );
+  background: var(--mongolia-image-overlay);
+}
+
+@media (max-width: 760px) {
+  .hero {
+    background-position: center;
+    min-height: 82vh;
+  }
 }
 
 .hero-content {
@@ -616,6 +689,115 @@ img {
 .herder small {
   color: var(--muted);
   display: block;
+}
+.herder-location {
+  min-width: 90px;
+}
+.herder-location-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--access-sand);
+  color: var(--access-blue);
+  font-size: 1.35rem;
+}
+
+.guest-info-banner {
+  width: min(calc(100% - 32px), 1160px);
+  margin: 18px auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 22px;
+  border: 1px solid rgba(217, 164, 65, 0.55);
+  border-radius: var(--r);
+  background: var(--access-sand);
+  color: var(--access-blue);
+}
+.guest-info-banner p {
+  margin: 0;
+  font-weight: 600;
+}
+.guest-info-banner > div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+.guest-banner-login {
+  background: var(--access-blue);
+  color: #fff;
+}
+.guest-banner-login:hover {
+  background: var(--access-green);
+}
+.guest-banner-signup {
+  color: var(--access-blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.lock-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 7px 10px;
+  border: 1px solid rgba(217, 164, 65, 0.75);
+  border-radius: 9px;
+  background: var(--access-sand);
+  color: var(--access-blue);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  transition: background-color 0.18s, border-color 0.18s, transform 0.18s;
+}
+.lock-badge:hover {
+  border-color: var(--access-green);
+  background: #e8efd9;
+  transform: translateY(-1px);
+}
+.details-lock {
+  align-self: flex-start;
+}
+.guest-origin {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.private-loading {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.private-data-error {
+  padding: 10px 14px;
+  border: 1px solid #e8b4ae;
+  border-radius: 9px;
+  background: #fff3f1;
+  color: #8f1d14;
+}
+
+@media (max-width: 600px) {
+  .guest-info-banner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .guest-info-banner > div {
+    justify-content: flex-start;
+  }
+  .herder {
+    flex-wrap: wrap;
+  }
+  .herder .lock-badge {
+    margin-left: 54px;
+  }
 }
 
 /* ─── Card internals ───────────────────────────────────────────── */

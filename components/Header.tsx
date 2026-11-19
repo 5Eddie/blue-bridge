@@ -1,15 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { CART_EVENT, getCartCount } from "./cart";
+import useDemoUser from "./useDemoUser";
+import { clearCurrentUser } from "@/lib/offline-demo";
 
 export default function Header() {
+  const pathname = usePathname();
   const t = useTranslations("nav");
+  const access = useTranslations("access");
   const locale = useLocale();
+  const user = useDemoUser();
   const [open, setOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
   const [count, setCount] = useState(0);
+  const [logoutError, setLogoutError] = useState("");
 
   useEffect(() => {
     const update = () => setCount(getCartCount());
@@ -28,11 +36,27 @@ export default function Header() {
     window.location.reload();
   }
 
+  function logout() {
+    try {
+      clearCurrentUser();
+      setAccountOpen(false);
+      setOpen(false);
+      setLogoutError("");
+    } catch {
+      setLogoutError(access("logoutError"));
+    }
+  }
+
+  if (pathname === "/login") return null;
+  const loginHref = `/login?next=${encodeURIComponent(pathname || "/")}`;
+
   const links = [
     { href: "/#products", label: t("dairy") },
     { href: "/#stays", label: t("stays") },
     { href: "/#how", label: t("how") },
     { href: "/#herders", label: t("herders") },
+    { href: "/#about", label: t("about") },
+    { href: "/#membership", label: t("membership") },
   ];
 
   return (
@@ -74,9 +98,33 @@ export default function Header() {
             <span className="cart-count">{count}</span>
           </button>
 
-          <Link href="/login" className="btn login-btn">
-            {t("login")}
-          </Link>
+          {user ? (
+            <div className="account-menu">
+              <button
+                type="button"
+                className="btn account-trigger"
+                aria-label={user.name}
+                aria-expanded={accountOpen}
+                aria-controls="account-menu"
+                onClick={() => setAccountOpen((value) => !value)}
+              >
+                <span className="account-name">{user.name}</span>
+                <span aria-hidden="true">⌄</span>
+              </button>
+              {accountOpen && (
+                <div id="account-menu" className="account-popover">
+                  <button type="button" onClick={logout}>
+                    {t("logout")}
+                  </button>
+                  {logoutError && <p role="alert">{logoutError}</p>}
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link href={loginHref} className="btn login-btn">
+              {t("login")}
+            </Link>
+          )}
 
           <button
             type="button"
@@ -117,9 +165,19 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <Link href="/login" onClick={() => setOpen(false)}>
-            {t("login")}
-          </Link>
+          {user ? (
+            <>
+              <p className="mobile-account-label">{user.name}</p>
+              <button type="button" className="mobile-logout" onClick={logout}>
+                {t("logout")}
+              </button>
+            </>
+          ) : (
+            <Link href={loginHref} onClick={() => setOpen(false)}>
+              {t("login")}
+            </Link>
+          )}
+          {logoutError && <p className="logout-error" role="alert">{logoutError}</p>}
         </nav>
       )}
     </header>

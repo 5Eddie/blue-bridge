@@ -21,7 +21,12 @@ export default async function AccountPage() {
     typeof user.user_metadata?.display_name === 'string'
       ? user.user_metadata.display_name
       : user.email
-  const role = user.user_metadata?.role === 'local' ? 'Local' : 'Traveler'
+  const role =
+    user.user_metadata?.role === 'local'
+      ? 'Herder family / host'
+      : user.user_metadata?.role === 'buyer'
+        ? 'Buyer'
+        : 'Tourist'
 
   return (
     <main className="mx-auto w-full max-w-2xl space-y-6 p-6">

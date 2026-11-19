@@ -1,0 +1,124 @@
+.page {
+  min-height: 100vh;
+  background: #fbfaf6;
+}
+
+.container {
+  width: min(1120px, 90%);
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-flex;
+  margin: 25px 0 18px;
+  color: #536d46;
+  font-size: 0.83rem;
+  font-weight: 650;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.profileHero {
+  display: grid;
+  min-height: 310px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  overflow: hidden;
+  border: 1px solid #e8e7df;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(37, 57, 43, 0.06);
+}
+
+.profilePhoto {
+  min-height: 310px;
+  background-color: #9eaa85;
+  background-image:
+    linear-gradient(90deg, rgba(28, 42, 34, 0.04), rgba(28, 42, 34, 0.22)),
+    var(--mongolia-background-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(24px, 4vw, 46px);
+}
+
+.eyebrow {
+  color: #668250;
+  font-size: 0.67rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+}
+
+.profileDetails h1 {
+  margin: 11px 0 10px;
+  color: #263d32;
+  font-family: var(--font-noto-serif), Georgia, serif;
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  line-height: 1.18;
+}
+
+.hostName {
+  margin: 0;
+  color: #58675e;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.location {
+  margin: 8px 0 20px;
+  color: #7a857d;
+  font-size: 0.81rem;
+}
+
+.profileMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.profileMeta span {
+  border: 1px solid #e2e8de;
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #64705f;
+  font-size: 0.71rem;
+}
+
+.profileMeta strong {
+  color: #b38326;
+}
+
+@media (max-width: 700px) {
+  .profileHero {
+    grid-template-columns: 1fr;
+  }
+
+  .profilePhoto {
+    min-height: 220px;
+  }
+
+  .profileDetails {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    width: 92%;
+  }
+
+  .profilePhoto {
+    min-height: 190px;
+  }
+
+  .profileMeta {
+    gap: 6px;
+  }
+}

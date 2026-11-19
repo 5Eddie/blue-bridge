@@ -2,9 +2,10 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import type { Product } from "./temp-data";
+import type { ProductPreview } from "./temp-data";
 import ProductCard from "./ProductCard";
 import { SEARCH_EVENT } from "./HeroControls";
+import usePrivateDemoData from "./usePrivateDemoData";
 
 interface SearchDetail {
   q: string;
@@ -12,10 +13,12 @@ interface SearchDetail {
   mode: string;
 }
 
-export default function DairySection({ products }: { products: Product[] }) {
+export default function DairySection({ products }: { products: ProductPreview[] }) {
   const t = useTranslations("sections");
   const tf = useTranslations("filters");
   const te = useTranslations("empty");
+  const access = useTranslations("access");
+  const { data: privateData, failed } = usePrivateDemoData();
 
   const categories = useMemo(
     () => Array.from(new Set(products.map((p) => p.category))),
@@ -36,7 +39,8 @@ export default function DairySection({ products }: { products: Product[] }) {
 
   const visible = products.filter((p) => {
     const okCat = cat === "all" || p.category === cat;
-    const hay = `${p.title} ${p.description} ${p.herder.name} ${p.herder.soum} ${p.herder.province}`.toLowerCase();
+    const fullProduct = privateData?.products.find((item) => item.id === p.id);
+    const hay = `${p.title} ${p.description} ${fullProduct?.herder.name ?? ""} ${p.herder.soum} ${p.herder.province}`.toLowerCase();
     const okQ = !query.q || hay.includes(query.q.trim().toLowerCase());
     const okR = !query.region || p.herder.province === query.region;
     return okCat && okQ && okR;
@@ -51,6 +55,8 @@ export default function DairySection({ products }: { products: Product[] }) {
             <p>{t("featuredProductsSub")}</p>
           </div>
         </div>
+
+        {failed && <p className="private-data-error" role="alert">{access("privateDataError")}</p>}
 
         <div className="chips" role="group" aria-label={tf("category")}>
           <button
@@ -77,7 +83,11 @@ export default function DairySection({ products }: { products: Product[] }) {
         {visible.length ? (
           <div className="grid">
             {visible.map((p) => (
-              <ProductCard key={p.id} product={p} />
+              <ProductCard
+                key={p.id}
+                product={p}
+                privateProduct={privateData?.products.find((item) => item.id === p.id)}
+              />
             ))}
           </div>
         ) : (

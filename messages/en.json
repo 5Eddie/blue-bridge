@@ -5,8 +5,11 @@
     "stays": "Family stays",
     "how": "How it works",
     "herders": "Herders",
+    "about": "About",
+    "membership": "Membership",
     "cart": "Cart",
     "login": "Log in",
+    "logout": "Log out",
     "navLabel": "Main menu",
     "langLabel": "Switch language",
     "menuLabel": "Open menu"
@@ -51,9 +54,152 @@
   "cards": {
     "addToCart": "Add to cart",
     "visitRequest": "Request a family stay",
+    "priceLocked": "Log in to see price",
+    "detailsLocked": "Log in to see full details",
     "perDay": "/ night",
     "soum": "soum",
     "ratingLabel": "Rating"
+  },
+  "access": {
+    "banner": "Log in to see prices and household info",
+    "login": "Log in",
+    "createAccount": "Create account",
+    "guestStayTeaser": "Experience daily life with a local herder family.",
+    "logoutError": "We couldn't sign you out. Please try again.",
+    "privateDataError": "We couldn't load your account details. Please refresh and try again.",
+    "loading": "Loading details…"
+  },
+  "about": {
+    "eyebrow": "A more direct way to travel",
+    "title": "What is Nomad Stay?",
+    "intro": "Nomad Stay connects tourists and buyers directly with herder families across Mongolia, with no middlemen. Discover local dairy, share a day of nomadic life, and support the families who welcome you.",
+    "features": [
+      {
+        "icon": "🧀",
+        "title": "Buy dairy products",
+        "text": "Order aaruul, tsagaan idee, airag and more directly from herder families."
+      },
+      {
+        "icon": "⛺",
+        "title": "Stay with a herder family",
+        "text": "Live a nomadic day, enjoy local food, and ride horses with your hosts."
+      },
+      {
+        "icon": "🤝",
+        "title": "Support herder families",
+        "text": "Fair prices and direct connections help more value reach each family."
+      }
+    ],
+    "processEyebrow": "Simple from start to finish",
+    "processTitle": "How it works",
+    "steps": [
+      { "title": "Register", "text": "Create a free account to get started." },
+      { "title": "Choose", "text": "Pick a dairy product or a herder family." },
+      { "title": "Order or book", "text": "Send your request directly through the platform." },
+      { "title": "Rate and review", "text": "Share your experience and help the community." }
+    ],
+    "statsLabel": "Nomad Stay community at a glance",
+    "stats": [
+      { "value": "120+", "label": "Herder families" },
+      { "value": "21", "label": "Aimags" },
+      { "value": "4.8", "label": "Average rating" }
+    ],
+    "ctaText": "Ready to discover Mongolia, one family at a time?",
+    "dairyCta": "Buy dairy products",
+    "staysCta": "Stay with a family"
+  },
+  "membership": {
+    "eyebrow": "Choose what fits your journey",
+    "title": "Membership",
+    "intro": "Start for free and choose a plan that suits the way you travel, shop, or host.",
+    "billingLabel": "Billing period",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "twoMonthsFree": "2 months free",
+    "perMonth": "/ month",
+    "perYear": "/ year",
+    "freeForever": "Free forever",
+    "yearlySavings": "Billed yearly · 2 months free",
+    "mostPopular": "Most popular",
+    "currentPlan": "Your current plan",
+    "upgrade": "Upgrade",
+    "planUpdated": "Your plan is now Free.",
+    "paymentComingSoon": "Payment coming soon",
+    "updateFailed": "We couldn't update your plan. Please sign in again and retry.",
+    "plans": {
+      "free": {
+        "title": "Free",
+        "description": "Tourist / Buyer · free forever",
+        "cta": "Sign up free",
+        "features": [
+          "Browse products and households",
+          "See prices and host info after login",
+          "Add products to your cart",
+          "Write reviews"
+        ]
+      },
+      "premium": {
+        "title": "Premium",
+        "description": "For active tourists and regular buyers",
+        "cta": "Go Premium",
+        "features": [
+          "Everything in Free",
+          "5–10% off dairy orders",
+          "Priority booking",
+          "Early access to new herder families",
+          "Saved favorites and wishlist",
+          "Free cancellation on bookings",
+          "Premium badge on your reviews"
+        ]
+      },
+      "pro": {
+        "title": "Pro",
+        "description": "Business account for herder families and hosts",
+        "cta": "Become a Pro host",
+        "features": [
+          "Create a host or seller profile",
+          "List unlimited products and stays",
+          "Manage orders and bookings",
+          "Reply to reviews",
+          "Verified host badge",
+          "Higher search visibility",
+          "Views, orders, and rating statistics"
+        ]
+      }
+    },
+    "comparison": {
+      "title": "Compare plans",
+      "feature": "Feature",
+      "included": "Included",
+      "notIncluded": "Not included",
+      "rows": [
+        { "label": "Browse products and households", "free": true, "premium": true, "pro": true },
+        { "label": "See prices and host info after login", "free": true, "premium": true, "pro": true },
+        { "label": "Add to cart and write reviews", "free": true, "premium": true, "pro": true },
+        { "label": "Dairy discounts and priority booking", "free": false, "premium": true, "pro": false },
+        { "label": "Create listings and manage bookings", "free": false, "premium": false, "pro": true },
+        { "label": "Verified host badge and statistics", "free": false, "premium": false, "pro": true }
+      ]
+    },
+    "faqTitle": "Frequently asked questions",
+    "faq": [
+      {
+        "question": "Is it free?",
+        "answer": "Yes. The Free plan is free forever. Premium and Pro prices are placeholders until payments are available."
+      },
+      {
+        "question": "Can I cancel anytime?",
+        "answer": "You can change your selected plan at any time. There are no recurring charges in this demo."
+      },
+      {
+        "question": "How do herders get paid?",
+        "answer": "The platform connects guests and buyers directly with herder families. Payment processing is not enabled yet, so arrangements are made directly."
+      },
+      {
+        "question": "Is my personal info safe?",
+        "answer": "This demo stores account data in your browser's localStorage and does not send it to a server. Avoid using real or sensitive information."
+      }
+    ]
   },
   "sections": {
     "featuredProducts": "Featured dairy",

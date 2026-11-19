@@ -2,15 +2,18 @@
 
 import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import type { Product } from "./temp-data";
+import type { ProductPreview } from "./temp-data";
 import ProductCard from "./ProductCard";
 import { useRegionOptions } from "./provinces";
+import usePrivateDemoData from "./usePrivateDemoData";
 
-export default function DairyBrowser({ products }: { products: Product[] }) {
+export default function DairyBrowser({ products }: { products: ProductPreview[] }) {
   const t = useTranslations("listings");
   const tf = useTranslations("filters");
   const te = useTranslations("empty");
+  const access = useTranslations("access");
   const regions = useRegionOptions();
+  const { data: privateData, failed } = usePrivateDemoData();
 
   const categories = useMemo(
     () => Array.from(new Set(products.map((p) => p.category))),
@@ -23,7 +26,8 @@ export default function DairyBrowser({ products }: { products: Product[] }) {
 
   const visible = products.filter((p) => {
     const okCat = cat === "all" || p.category === cat;
-    const hay = `${p.title} ${p.description} ${p.herder.name} ${p.herder.soum} ${p.herder.province}`.toLowerCase();
+    const fullProduct = privateData?.products.find((item) => item.id === p.id);
+    const hay = `${p.title} ${p.description} ${fullProduct?.herder.name ?? ""} ${p.herder.soum} ${p.herder.province}`.toLowerCase();
     const okQ = !q || hay.includes(q.trim().toLowerCase());
     const okR = !region || p.herder.province === region;
     return okCat && okQ && okR;
@@ -36,6 +40,8 @@ export default function DairyBrowser({ products }: { products: Product[] }) {
           <h1 className="page-title">{t("title")}</h1>
           <p>{t("subtitle")}</p>
         </header>
+
+        {failed && <p className="private-data-error" role="alert">{access("privateDataError")}</p>}
 
         <div className="chips" role="group" aria-label={tf("category")}>
           <button
@@ -87,7 +93,11 @@ export default function DairyBrowser({ products }: { products: Product[] }) {
         {visible.length ? (
           <div className="grid">
             {visible.map((p) => (
-              <ProductCard key={p.id} product={p} />
+              <ProductCard
+                key={p.id}
+                product={p}
+                privateProduct={privateData?.products.find((item) => item.id === p.id)}
+              />
             ))}
           </div>
         ) : (

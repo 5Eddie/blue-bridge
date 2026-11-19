@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1f4e79">
+    <title>Nomad Stay — Mongolia</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <main>
+      <section class="login-page" id="login-page">
+        <div class="login-scrim" aria-hidden="true"></div>
+        <header class="topbar">
+          <a class="brand" href="#" aria-label="Nomad Stay home">
+            <span class="brand-mark" aria-hidden="true">N</span>
+            <span>Nomad Stay</span>
+          </a>
+          <div class="language-switch" role="group" aria-label="Choose language">
+            <button type="button" data-language="mn" aria-pressed="false">MN</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" data-language="en" aria-pressed="true">EN</button>
+          </div>
+        </header>
+
+        <div class="login-content">
+          <section class="story" aria-label="A more meaningful way to travel">
+            <span class="eyebrow">MONGOLIA · SLOW DOWN, STAY AWHILE</span>
+            <p data-copy="tagline">A little closer to the nomadic way of life.</p>
+            <div class="story-rule"></div>
+            <span class="story-note" data-copy="secure">A more meaningful way to travel</span>
+          </section>
+
+          <section class="auth-card" aria-labelledby="auth-title">
+            <div class="card-top">
+              <span class="card-icon" aria-hidden="true">✳</span>
+              <span class="card-kicker">NOMAD STAY · MONGOLIA</span>
+            </div>
+            <h1 id="auth-title" data-copy="welcome">Welcome back</h1>
+            <p class="intro" id="auth-intro" data-copy="intro">Sign in to find your place on the steppe.</p>
+            <p class="feedback" id="auth-feedback" role="status" aria-live="polite" hidden></p>
+
+            <form class="auth-form" id="login-form" novalidate>
+              <label class="field">
+                <span data-copy="identity">Email or phone</span>
+                <input name="identity" type="text" autocomplete="username" placeholder="name@email.com" required>
+              </label>
+              <label class="field">
+                <span data-copy="password">Password</span>
+                <span class="password-wrap">
+                  <input name="password" type="password" autocomplete="current-password" placeholder="••••••••" required>
+                  <button class="password-toggle" type="button" data-toggle-password aria-label="Show password" aria-pressed="false">Show</button>
+                </span>
+              </label>
+              <div class="form-options">
+                <label class="remember">
+                  <input type="checkbox" name="remember">
+                  <span data-copy="remember">Remember me</span>
+                </label>
+                <button class="text-button" type="button" data-action="forgot" data-copy="forgot">Forgot password?</button>
+              </div>
+              <button class="primary-button" id="login-button" type="submit">
+                <span data-copy="login">Log in</span>
+                <span class="spinner" aria-hidden="true" hidden></span>
+                <span class="arrow" aria-hidden="true">→</span>
+              </button>
+            </form>
+
+            <form class="auth-form" id="signup-form" hidden novalidate>
+              <label class="field">
+                <span data-copy="name">Your name</span>
+                <input name="name" type="text" autocomplete="name" placeholder="Your name" required>
+              </label>
+              <label class="field">
+                <span data-copy="identity">Email or phone</span>
+                <input name="identity" type="text" autocomplete="email" placeholder="name@email.com" required>
+              </label>
+              <label class="field">
+                <span data-copy="password">Password</span>
+                <span class="password-wrap">
+                  <input name="password" type="password" autocomplete="new-password" placeholder="At least 6 characters" minlength="6" required>
+                  <button class="password-toggle" type="button" data-toggle-password aria-label="Show password" aria-pressed="false">Show</button>
+                </span>
+              </label>
+              <label class="field">
+                <span data-copy="role">I’m joining as a...</span>
+                <select name="role" required>
+                  <option value="tourist" data-copy="tourist">Tourist</option>
+                  <option value="buyer" data-copy="buyer">Buyer</option>
+                  <option value="host" data-copy="host">Herder family / Ger camp host</option>
+                </select>
+              </label>
+              <button class="primary-button" type="submit">
+                <span data-copy="create">Create account</span>
+                <span class="spinner" aria-hidden="true" hidden></span>
+                <span class="arrow" aria-hidden="true">→</span>
+              </button>
+            </form>
+
+            <p class="demo-info" data-copy="demo">Demo login: demo@nomadstay.mn · Demo1234</p>
+            <div class="divider"><span data-copy="or">or continue with</span></div>
+            <div class="social-buttons">
+              <button class="social-button" type="button" data-social="Google">
+                <span class="google-mark" aria-hidden="true">G</span>
+                <span data-copy="google">Continue with Google</span>
+              </button>
+              <button class="social-button" type="button" data-social="Facebook">
+                <span class="facebook-mark" aria-hidden="true">f</span>
+                <span data-copy="facebook">Continue with Facebook</span>
+              </button>
+            </div>
+            <p class="switch-prompt" id="switch-prompt">
+              <span data-copy="new">New to Nomad Stay?</span>
+              <button class="text-button" type="button" data-action="switch" data-copy="createAccount">Create an account</button>
+            </p>
+            <p class="preview-prompt">
+              <button class="text-button" type="button" data-action="preview" data-copy="browseReviews">Browse host reviews</button>
+            </p>
+          </section>
+        </div>
+        <div class="bottom-note"><span aria-hidden="true">✦</span> <span data-copy="secure">A more meaningful way to travel</span></div>
+      </section>
+
+      <section class="profile-page" id="profile-page" hidden>
+        <header class="profile-topbar">
+          <a class="brand dark-brand" href="#" data-action="home">
+            <span class="brand-mark" aria-hidden="true">N</span>
+            <span>Nomad Stay</span>
+          </a>
+          <div class="profile-actions">
+            <span id="signed-in-as" class="signed-in-as"></span>
+            <button type="button" class="logout-button" data-action="logout" data-copy="logout">Log out</button>
+          </div>
+        </header>
+
+        <div class="profile-container">
+          <section class="host-hero">
+            <div class="host-photo" role="img" aria-label="Horses gather at a steppe watering place"></div>
+            <div class="host-details">
+              <span class="eyebrow dark-eyebrow">HERDER FAMILY · ARKHANGAI</span>
+              <h1 data-copy="hostTitle">A home beneath the wide Mongolian sky</h1>
+              <p class="host-name">Hosted by the Bat-Erdene family</p>
+              <p class="host-location">⌖ Tsenkher, Arkhangai Province</p>
+              <div class="host-tags">
+                <span><strong id="host-average">4.8</strong> ★ <span data-copy="guestRating">guest rating</span></span>
+                <span data-copy="gerStay">Traditional ger stay</span>
+                <span data-copy="familyMeals">Meals with the family</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="reviews-section" aria-labelledby="reviews-title">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow dark-eyebrow" data-copy="guestNotes">GUEST NOTES</span>
+                <h2 id="reviews-title" data-copy="reviewsTitle">Reviews from the steppe</h2>
+                <p data-copy="reviewsIntro">Stories and helpful details shared by guests who stayed here.</p>
+              </div>
+              <a class="write-link" href="#write-review" data-copy="writeReview">Write a review ↗</a>
+            </div>
+
+            <div class="rating-summary">
+              <div class="average">
+                <strong id="average-rating">4.8</strong>
+                <span class="display-stars" id="average-stars" aria-label="5 out of 5 stars">★★★★★</span>
+                <span><b id="review-count">5</b> <span data-copy="guestReviews">guest reviews</span></span>
+              </div>
+              <div class="rating-breakdown" id="rating-breakdown" aria-label="Rating breakdown"></div>
+            </div>
+
+            <form class="review-form" id="review-form">
+              <div class="form-heading">
+                <div>
+                  <h3 data-copy="shareExperience">Share your experience</h3>
+                  <p data-copy="reviewHelp">Your notes help travelers and support local hosts.</p>
+                </div>
+                <span class="form-badge">✦ <span data-copy="guestVoice">Guest voice</span></span>
+              </div>
+              <fieldset class="overall-rating">
+                <legend data-copy="overall">Overall experience *</legend>
+                <div class="star-picker" id="overall-stars" role="radiogroup" aria-label="Overall rating"></div>
+              </fieldset>
+              <details class="category-details">
+                <summary data-copy="optionalRatings">Add optional category ratings</summary>
+                <div class="category-grid" id="category-ratings"></div>
+              </details>
+              <label class="comment-field">
+                <span data-copy="yourReview">Your review</span>
+                <textarea id="review-comment" maxlength="500" rows="4" placeholder="What made your stay memorable?" required></textarea>
+                <span class="char-count"><span id="comment-count">0</span>/500</span>
+              </label>
+              <div class="upload-row">
+                <div>
+                  <label class="upload-label" for="review-photos">＋ <span data-copy="addPhotos">Add photos</span></label>
+                  <input class="file-input" id="review-photos" type="file" accept="image/*" multiple>
+                  <span class="upload-hint" data-copy="photoLimit">Optional · up to 3 images</span>
+                </div>
+                <span id="photo-count" class="photo-count"></span>
+              </div>
+              <div class="upload-previews" id="upload-previews"></div>
+              <p class="form-message" id="review-message" role="alert" hidden></p>
+              <button class="primary-button submit-review" type="submit">
+                <span data-copy="submitReview">Submit review</span><span class="arrow" aria-hidden="true">→</span>
+              </button>
+            </form>
+
+            <div class="review-list-heading">
+              <div><h3 data-copy="guestReviewList">Guest reviews</h3><span id="shown-count">5 shown</span></div>
+              <div class="filters">
+                <label class="photo-filter"><input id="photos-filter" type="checkbox"><span data-copy="withPhotos">With photos</span></label>
+                <label class="sort-label"><span data-copy="sortBy">Sort by</span>
+                  <select id="sort-reviews" aria-label="Sort reviews">
+                    <option value="newest" data-copy="newest">Newest</option>
+                    <option value="highest" data-copy="highest">Highest rated</option>
+                    <option value="lowest" data-copy="lowest">Lowest rated</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <div class="review-list" id="review-list"></div>
+            <div class="empty-state" id="empty-state" hidden>
+              <span aria-hidden="true">✦</span>
+              <h3 data-copy="emptyTitle">No reviews with photos yet</h3>
+              <p data-copy="emptyText">Try another filter, or be the first to share a moment from your stay.</p>
+            </div>
+            <nav class="pagination" id="pagination" aria-label="Review pages"></nav>
+            <p class="demo-note" data-copy="localNote">Demo reviews and new reviews are stored in this browser only.</p>
+          </section>
+        </div>
+      </section>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+  </body>
+</html>
